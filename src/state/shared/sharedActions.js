@@ -1,7 +1,7 @@
 import {_getUsers, _getQuestions} from "../../api/_DATA";
 import {receiveQuestionsActionCreator} from "../questions/questionsActions";
 import {receiveUsersActionCreator} from "../users/usersActions";
-import {setAutherUserActionCreator} from "../authedUser/authedUserActions";
+import {setAuthedUserActionCreator} from "../authedUser/authedUserActions";
 
 const defaultLogin = 'sarahedo'
 export function handleInitialData(){
@@ -10,7 +10,7 @@ export function handleInitialData(){
             return _getQuestions().then((questions) =>{
                 dispatch(receiveUsersActionCreator(users));
                 dispatch(receiveQuestionsActionCreator(questions));
-                dispatch(setAutherUserActionCreator(defaultLogin));
+                //dispatch(setAutherUserActionCreator(defaultLogin));
             })
         })
     }

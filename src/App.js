@@ -7,32 +7,51 @@ import Navigation from "./components/Navigation";
 import Home from "./pages/Home";
 import NewQuestion from "./pages/NewQuestion";
 import Leaderboard from "./pages/Leaderboard";
+import {Spinner} from "react-bootstrap";
+import Login from "./pages/Login";
 
 
 class App extends Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-            loading: true
-        }
-    }
     componentDidMount() {
         this.props.dispatch(handleInitialData());
     }
 
     render(){
-        return (
-            <div className="App">
-                <Router>
-                    <Route path="/" component={Navigation}/>
-                    <Route exact path="/" component={Home}/>
-                    <Route exact path="/leaderboard" component={Leaderboard}/>
-                    <Route exact path="/new" component={NewQuestion}/>
-                </Router>
-            </div>
+        return(
+            <Router>
+                {this.props.loading === false ?
+                    <div>
+                        <Route path="/" component={Navigation}/>
+                        {this.props.loggedIn === true ?
+                            <div className="App">
+                                <Route exact path="/" component={Home}/>
+                                <Route exact path="/leaderboard" component={Leaderboard}/>
+                                <Route exact path="/new" component={NewQuestion}/>
+                            </div>
+                            :
+                            <div className="App">
+                                <Login/>
+                            </div>
+                        }
+                    </div>
+                    :
+                    <div className="App">
+                        <Spinner animation="border" style={{marginTop: '15rem'}}/>
+                    </div>
+                }
+
+            </Router>
         );
     }
 
 }
 
-export default connect()(App);
+function mapStateToProps({authedUser, users}){
+    return {
+        loggedIn: authedUser !== null,
+        loading: Object.keys(users).length < 1
+    }
+}
+
+
+export default connect(mapStateToProps)(App);
