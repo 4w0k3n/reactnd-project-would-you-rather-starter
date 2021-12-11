@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {Badge, Container, ListGroup, Row, Tab, Tabs} from "react-bootstrap";
-import QuestionItem from "../components/QuestionItem";
+import QuestionListItem from "../components/QuestionListItem";
 
 
 class Home extends Component {
@@ -18,14 +18,14 @@ class Home extends Component {
                                 <ListGroup as="ol">
                                 {this.props.sorted.map(q => (
                                         this.props.unansweredQuestions.includes(q) && (
-                                        <QuestionItem key={q} question = {q}/>
+                                        <QuestionListItem key={q} question = {q}/>
                                     )))}
                                 </ListGroup>
                             </Tab>
                             <Tab eventKey="answered" title="Answered">
                                 {this.props.sorted.map(q => (
                                     this.props.answeredQuestions.includes(q) && (
-                                        <QuestionItem key={q} question = {q}/>
+                                        <QuestionListItem key={q} question = {q}/>
                                     )))}
                             </Tab>
                         </Tabs>

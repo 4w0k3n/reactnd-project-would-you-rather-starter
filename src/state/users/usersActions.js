@@ -1,4 +1,4 @@
-import {RECEIVE_USERS} from "../actionTypes";
+import {RECEIVE_USERS, SAVE_ANSWER_TO_USER} from "../actionTypes";
 
 export function receiveUsersActionCreator (users) {
     return {
@@ -6,3 +6,13 @@ export function receiveUsersActionCreator (users) {
         users
     }
 }
+
+export function saveAnswerToUserActionCreator(authedUser, qid, answer){
+    return {
+        type: SAVE_ANSWER_TO_USER,
+        authedUser,
+        qid,
+        answer
+    }
+}
+

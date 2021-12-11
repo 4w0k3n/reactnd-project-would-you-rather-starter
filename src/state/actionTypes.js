@@ -1,6 +1,8 @@
 //users
 export const RECEIVE_USERS = 'RECEIVE_USERS';
+export const SAVE_ANSWER_TO_USER = 'SAVE_ANSWER_TO_USER'
 //questions
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
+export const SAVE_ANSWER_TO_QUESTION = 'SAVE_ANSWER_TO_QUESTION'
 //authedUser
 export const SET_AUTHED_USER = 'SET_AUTHED_USER'

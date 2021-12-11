@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import {Badge, Button, Container, Figure, ListGroup, Row} from "react-bootstrap";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
-import question from "../pages/Question";
+import question from "../pages/QuestionDetail";
 
-class QuestionItem extends Component {
+class QuestionListItem extends Component {
     render() {
         return (
             <Container >
@@ -49,4 +49,4 @@ function mapStateToProps({users, questions}, {question}) {
     }
 }
 
-export default connect(mapStateToProps)(QuestionItem);
+export default connect(mapStateToProps)(QuestionListItem);
