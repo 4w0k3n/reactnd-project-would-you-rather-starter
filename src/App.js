@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation";
 import Home from "./pages/Home";
 import NewQuestion from "./pages/NewQuestion";
 import Leaderboard from "./pages/Leaderboard";
+import Question from "./pages/Question";
 import {Spinner} from "react-bootstrap";
 import Login from "./pages/Login";
 
@@ -27,6 +28,7 @@ class App extends Component{
                                 <Route exact path="/" component={Home}/>
                                 <Route exact path="/leaderboard" component={Leaderboard}/>
                                 <Route exact path="/new" component={NewQuestion}/>
+                                <Route path="/questions/:id" component={Question}/>
                             </div>
                             :
                             <div className="App">

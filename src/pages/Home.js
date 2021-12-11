@@ -13,18 +13,20 @@ class Home extends Component {
                 </Row>
                 <Container>
                     <Row>
-                        <Tabs defaultActiveKey="unanswered" id="uncontrolled-tab-example" className="mb-3">
+                        <Tabs defaultActiveKey="unanswered" id="uncontrolled-tab-example" className="mb-3" style={{marginTop: '1rem'}} >
                             <Tab eventKey="unanswered" title="Unanswered">
                                 <ListGroup as="ol">
-                                {this.props.unansweredQuestions.map(q => (
-                                        <QuestionItem/>
-                                    ))}
+                                {this.props.sorted.map(q => (
+                                        this.props.unansweredQuestions.includes(q) && (
+                                        <QuestionItem key={q} question = {q}/>
+                                    )))}
                                 </ListGroup>
                             </Tab>
                             <Tab eventKey="answered" title="Answered">
-                                {this.props.answeredQuestions.map(q => (
-                                        <QuestionItem/>
-                                    ))}
+                                {this.props.sorted.map(q => (
+                                    this.props.answeredQuestions.includes(q) && (
+                                        <QuestionItem key={q} question = {q}/>
+                                    )))}
                             </Tab>
                         </Tabs>
                     </Row>
@@ -36,7 +38,7 @@ class Home extends Component {
 
 function mapStateToProps({authedUser, questions, users}) {
     return {
-        authedUser, questions,
+        sorted: Object.keys(questions).sort((a, b) => (questions[b].timestamp - questions[a].timestamp)),
         answeredQuestions: Object.keys(users[authedUser].answers),
         unansweredQuestions: Object.keys(questions).filter(key => !Object.keys(users[authedUser].answers).includes(key))
     }

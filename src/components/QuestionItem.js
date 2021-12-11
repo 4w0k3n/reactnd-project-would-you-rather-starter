@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
-import {Badge, Button, Card, Container, Figure, ListGroup, Row} from "react-bootstrap";
+import {Badge, Button, Container, Figure, ListGroup, Row} from "react-bootstrap";
 import {connect} from "react-redux";
+import {Link} from "react-router-dom";
+import question from "../pages/Question";
 
 class QuestionItem extends Component {
     render() {
@@ -10,14 +12,27 @@ class QuestionItem extends Component {
                 <ListGroup.Item
                     as="li"
                     className="d-flex justify-content-between align-items-center"
-                    style={{width: '80%'}}
+                    style={{width: '60%', margin: '0.2rem'}}
                 >
-                    <div className="ms-2 me-auto">
-                        <div className="fw-bold">Subheading</div>
-                        Cras justo odio
+                    <Figure>
+                        <Figure.Image
+                            width={100}
+                            height={180}
+                            src={this.props.users[this.props.poll.author].avatarURL}
+                        />
+                        <Figure.Caption>
+                            @{this.props.poll.author}
+                        </Figure.Caption>
+                        <span className='text-muted' style={{fontSize: '10px'}}>{new Date(this.props.poll.timestamp).toLocaleString()}</span>
+                    </Figure>
+                    <div className="ms-5 me-auto">
+                        <div className="fw-bold"> Would you rather...</div>
                     </div>
-                    <Badge variant="primary" pill>
-                        14
+                    <div className="mb-0 me-auto">
+                        <div className="fw fst-italic" style={{marginBottom: '2rem'}}>  ...{this.props.poll.optionOne.text}</div>
+                        <div className="fw fst-italic" style={{marginTop: '2rem'}}> ...{this.props.poll.optionTwo.text}</div>
+                    </div>
+                    <Badge as={Link} variant="primary" pill to={`/questions/${this.props.question}`}> View Poll
                     </Badge>
                 </ListGroup.Item>
                 </Row>
@@ -26,4 +41,12 @@ class QuestionItem extends Component {
     }
 }
 
-export default connect()(QuestionItem);
+
+function mapStateToProps({users, questions}, {question}) {
+    return{
+        poll: questions[question],
+        users,
+    }
+}
+
+export default connect(mapStateToProps)(QuestionItem);
