@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {Badge, Container, Figure, ListGroup, Row} from "react-bootstrap";
-import {connect} from "react-redux";
-import {Link} from "react-router-dom";
+import {Badge, Container, Figure, ListGroup, Row} from 'react-bootstrap';
+import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 class QuestionListItem extends Component {
     render() {
@@ -22,7 +22,7 @@ class QuestionListItem extends Component {
                             <Figure.Caption>
                                 @{this.props.poll.author}
                             </Figure.Caption>
-                            <span className='text-muted'
+                            <span className="text-muted"
                                   style={{fontSize: '10px'}}>{new Date(this.props.poll.timestamp).toLocaleString()}</span>
                         </Figure>
                         <div className="ms-5 me-auto">
@@ -38,17 +38,15 @@ class QuestionListItem extends Component {
                         </Badge>
                     </ListGroup.Item>
                 </Row>
-            </Container>
-        );
+            </Container>);
     }
 }
 
 
 function mapStateToProps({users, questions}, {question}) {
     return {
-        poll: questions[question],
-        users,
-    }
+        poll: questions[question], users,
+    };
 }
 
 export default connect(mapStateToProps)(QuestionListItem);

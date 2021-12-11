@@ -1,4 +1,4 @@
-import {SET_AUTHED_USER} from "../actionTypes";
+import {SET_AUTHED_USER} from '../actionTypes';
 
 export function authedUser(state = null, action) {
     switch (action.type) {
