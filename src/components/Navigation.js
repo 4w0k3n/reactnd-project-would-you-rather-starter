@@ -1,14 +1,13 @@
 import {Link} from 'react-router-dom';
-import {Button, Nav, Navbar, Dropdown} from 'react-bootstrap';
+import {Button, Nav, Navbar} from 'react-bootstrap';
 import {BsGithub, RiQuestionnaireLine, BsLadder, TiPlusOutline, AiOutlineUser} from 'react-icons/all';
 import {connect} from "react-redux";
 import {Component} from "react";
 import {setAuthedUserActionCreator} from "../state/authedUser/authedUserActions";
 
 
-class  Navigation extends Component{
+class Navigation extends Component {
     render() {
-        console.log(this.props);
         return (
             <div>
                 <Navbar sticky='top' bg='dark' variant='dark'>
@@ -28,13 +27,15 @@ class  Navigation extends Component{
                     </Nav>
                     {this.props.loggedIn ?
                         <Nav>
-                            <Nav.Link className="justify-content-end" as={Button} variant='outline-dark' style={{marginRight: 20}} onClick={e => this.logout(e)}> <AiOutlineUser
-                                style={{marginRight: 5}}/> Logout {this.props.authedUser}
+                            <Nav.Link className="justify-content-end" as={Button} variant='outline-dark'
+                                      style={{marginRight: 20}} onClick={e => this.logout(e)}> Logout ( <AiOutlineUser
+                                style={{marginRight: 5}}/>{this.props.authedUser} )
                             </Nav.Link>
                         </Nav>
                         :
                         <Nav>
-                            <Nav.Link className="justify-content-end" as={Button} variant='outline-dark' style={{marginRight: 20}}> <AiOutlineUser
+                            <Nav.Link className="justify-content-end" as={Button} variant='outline-dark'
+                                      style={{marginRight: 20}}> <AiOutlineUser
                                 style={{marginRight: 5}}/> Login
                             </Nav.Link>
                         </Nav>

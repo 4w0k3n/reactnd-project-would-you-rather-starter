@@ -1,21 +1,21 @@
 import React, {Component} from 'react';
-import {Card, CardGroup, Figure, Button, Spinner} from "react-bootstrap";
+import {Card, Figure, Button, Container} from "react-bootstrap";
 import {connect} from "react-redux";
 import {setAuthedUserActionCreator} from "../state/authedUser/authedUserActions";
-import {findAllByDisplayValue} from "@testing-library/react";
 
 
 class Login extends Component {
     render() {
         return (
-            <div className='container'>
+            <Container>
                 <div style={{marginTop: '5rem'}}>
                     <Card>
                         <Card.Title><h1>Choose your character!</h1></Card.Title>
                         <div>
                             {Object.keys(this.props.users).map(userId => (
                                 <span key={userId} style={{marginLeft: '3rem', marginRight: '3rem'}}>
-                        <Figure as = {Button} variant='outline-dark' style={{marginBottom: '3rem'}} onClick = {(e) => this.handleLogin(e, userId)}>
+                        <Figure as={Button} variant='outline-dark' style={{marginBottom: '3rem'}}
+                                onClick={(e) => this.handleLogin(e, userId)}>
                             <Figure.Image
                                 width={180}
                                 height={180}
@@ -31,8 +31,7 @@ class Login extends Component {
                         </div>
                     </Card>
                 </div>
-            </div>
-
+            </Container>
 
 
         );
@@ -45,10 +44,8 @@ class Login extends Component {
 }
 
 
-
-
 function mapStateToProps({users}) {
-    return{
+    return {
         loading: users === null,
         users
     }
