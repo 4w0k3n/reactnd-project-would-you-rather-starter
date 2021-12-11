@@ -1,4 +1,4 @@
-import {RECEIVE_USERS, SAVE_ANSWER_TO_USER} from "../actionTypes";
+import {RECEIVE_USERS, SAVE_ANSWER_TO_USER, SAVE_QUESTION_TO_USER} from "../actionTypes";
 
 export function users(state = {}, action) {
     switch (action.type) {
@@ -13,6 +13,14 @@ export function users(state = {}, action) {
                         ...state[action.authedUser].answers,
                         [action.qid]: action.answer
                     }
+                }
+            }
+        case SAVE_QUESTION_TO_USER:
+            return {
+                ...state,
+                [action.question.author]: {
+                    ...state[action.question.author],
+                    questions: state[action.question.author].questions.concat([action.question.id])
                 }
             }
         default:

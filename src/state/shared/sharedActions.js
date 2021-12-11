@@ -1,6 +1,7 @@
-import {_getUsers, _getQuestions, _saveQuestionAnswer} from "../../api/_DATA";
-import {receiveQuestionsActionCreator, saveAnswerToQuestionActionCreator} from "../questions/questionsActions";
-import {receiveUsersActionCreator, saveAnswerToUserActionCreator} from "../users/usersActions";
+import {_getUsers, _getQuestions, _saveQuestionAnswer, _saveQuestion} from "../../api/_DATA";
+import {receiveQuestionsActionCreator, saveAnswerToQuestionActionCreator, saveQuestionToQuestionsActionCreator} from "../questions/questionsActions";
+import {receiveUsersActionCreator, saveAnswerToUserActionCreator, saveQuestionToUserActionCreator} from "../users/usersActions";
+import {push} from "react-router-redux";
 
 
 export function handleInitialData() {
@@ -22,3 +23,14 @@ export function handleSaveAnswer(authedUser, qid, answer) {
         })
     }
 }
+
+export function handleSaveQuestion(question){
+    return (dispatch) => {
+        return _saveQuestion(question).then((formattedQuestion) => {
+            dispatch(saveQuestionToUserActionCreator(formattedQuestion));
+            dispatch(saveQuestionToQuestionsActionCreator(formattedQuestion));
+
+        })
+    }
+}
+

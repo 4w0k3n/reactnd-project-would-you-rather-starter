@@ -1,4 +1,4 @@
-import {RECEIVE_QUESTIONS, SAVE_ANSWER_TO_QUESTION} from "../actionTypes";
+import {RECEIVE_QUESTIONS, SAVE_ANSWER_TO_QUESTION, SAVE_QUESTION_TO_QUESTIONS} from "../actionTypes";
 
 export function receiveQuestionsActionCreator(questions) {
     return {
@@ -13,5 +13,12 @@ export function saveAnswerToQuestionActionCreator(authedUser, qid, answer) {
         authedUser,
         qid,
         answer
+    }
+}
+
+export function saveQuestionToQuestionsActionCreator(question){
+    return {
+        type: SAVE_QUESTION_TO_QUESTIONS,
+        question
     }
 }
