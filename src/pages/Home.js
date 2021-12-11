@@ -9,7 +9,7 @@ class Home extends Component {
         return (
             <Container fluid={true}>
                 <Row>
-                    <Badge bg='secondary' style={{fontSize: 38}}> Would you rather</Badge>
+                    <Badge bg='secondary' style={{fontSize: 38}}> Would you rather...</Badge>
                 </Row>
                 <Container>
                     <Row>
