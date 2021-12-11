@@ -12,13 +12,13 @@ import {Spinner} from "react-bootstrap";
 import Login from "./pages/Login";
 
 
-class App extends Component{
+class App extends Component {
     componentDidMount() {
         this.props.dispatch(handleInitialData());
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <Router>
                 {this.props.loading === false ?
                     <div>
@@ -48,7 +48,7 @@ class App extends Component{
 
 }
 
-function mapStateToProps({authedUser, users}){
+function mapStateToProps({authedUser, users}) {
     return {
         loggedIn: authedUser !== null,
         loading: Object.keys(users).length < 1

@@ -1,6 +1,6 @@
 import {RECEIVE_USERS, SAVE_ANSWER_TO_USER} from "../actionTypes";
 
-export function users(state = {}, action){
+export function users(state = {}, action) {
     switch (action.type) {
         case RECEIVE_USERS:
             return {...state, ...action.users};

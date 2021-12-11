@@ -13,19 +13,20 @@ class Home extends Component {
                 </Row>
                 <Container>
                     <Row>
-                        <Tabs defaultActiveKey="unanswered" id="uncontrolled-tab-example" className="mb-3" style={{marginTop: '1rem'}} >
+                        <Tabs defaultActiveKey="unanswered" id="uncontrolled-tab-example" className="mb-3"
+                              style={{marginTop: '1rem'}}>
                             <Tab eventKey="unanswered" title="Unanswered">
                                 <ListGroup as="ol">
-                                {this.props.sorted.map(q => (
+                                    {this.props.sorted.map(q => (
                                         this.props.unansweredQuestions.includes(q) && (
-                                        <QuestionListItem key={q} question = {q}/>
-                                    )))}
+                                            <QuestionListItem key={q} question={q}/>
+                                        )))}
                                 </ListGroup>
                             </Tab>
                             <Tab eventKey="answered" title="Answered">
                                 {this.props.sorted.map(q => (
                                     this.props.answeredQuestions.includes(q) && (
-                                        <QuestionListItem key={q} question = {q}/>
+                                        <QuestionListItem key={q} question={q}/>
                                     )))}
                             </Tab>
                         </Tabs>

@@ -14,9 +14,9 @@ export function handleInitialData() {
     }
 }
 
-export function handleSaveAnswer(authedUser, qid, answer){
+export function handleSaveAnswer(authedUser, qid, answer) {
     return (dispatch) => {
-        return _saveQuestionAnswer({authedUser, qid, answer}).then(() =>{
+        return _saveQuestionAnswer({authedUser, qid, answer}).then(() => {
             dispatch(saveAnswerToQuestionActionCreator(authedUser, qid, answer));
             dispatch(saveAnswerToUserActionCreator(authedUser, qid, answer));
         })

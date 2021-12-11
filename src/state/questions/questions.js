@@ -1,7 +1,6 @@
 import {RECEIVE_QUESTIONS, SAVE_ANSWER_TO_QUESTION} from "../actionTypes";
-import {authedUser} from "../authedUser/authedUser";
 
-export function questions(state = {}, action){
+export function questions(state = {}, action) {
     switch (action.type) {
         case RECEIVE_QUESTIONS:
             return {...state, ...action.questions};

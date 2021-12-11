@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import QuestionItem from "../components/QuestionListItem";
-import {Badge, Container, ListGroup, Row} from "react-bootstrap";
+import {Badge, Container} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import Poll from "../components/Poll";
 
@@ -12,7 +11,8 @@ class QuestionDetail extends Component {
                 {this.props.notFound ?
                     (
                         <h1 style={{marginTop: '15rem'}}>
-                        404: 'Question not found' <br/> Click <Badge as={Link} variant="primary" pill to={`/`}> here</Badge> to return.
+                            404: 'Question not found' <br/> Click <Badge as={Link} variant="primary" pill
+                                                                         to={`/`}> here</Badge> to return.
                         </h1>
                     )
                     :

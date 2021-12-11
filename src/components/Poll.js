@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import {Badge, Card, Col, Container, Figure, Row, Button, ProgressBar} from "react-bootstrap";
+import {Card, Col, Container, Figure, Row, Button, ProgressBar} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {handleSaveAnswer} from "../state/shared/sharedActions";
-import {AiOutlineUser, MdHowToVote, MdOutlineWhereToVote} from "react-icons/all";
+import {MdOutlineWhereToVote} from "react-icons/all";
 
 class Poll extends Component {
     render() {
@@ -55,52 +55,60 @@ class Poll extends Component {
                                 (
                                     <div>
                                         <Row>
-                                            <span className='text-muted' style={{marginTop: '2rem'}}>{this.props.poll.optionOne.text}
+                                            <span className='text-muted'
+                                                  style={{marginTop: '2rem'}}>{this.props.poll.optionOne.text}
                                                 {this.props.answered && this.props.answeredOption === 'optionOne' &&
                                                     <span className='text-success'>
-                                                        <MdOutlineWhereToVote style={{marginLeft: 20, fontSize:'30px'}}/>
+                                                        <MdOutlineWhereToVote
+                                                            style={{marginLeft: 20, fontSize: '30px'}}/>
                                                     </span>
                                                 }
                                             </span>
                                         </Row>
                                         <Row>
-                                            <Col> <ProgressBar animated label={this.props.questions[this.props.id].optionOne.votes.length + ` vote(s)`}
+                                            <Col> <ProgressBar animated
+                                                               label={this.props.questions[this.props.id].optionOne.votes.length + ` vote(s)`}
                                                                now={((this.props.questions[this.props.id].optionOne.votes.length)
                                                                    / (this.props.questions[this.props.id].optionOne.votes.length
-                                                                       + this.props.questions[this.props.id].optionTwo.votes.length))*100}
+                                                                       + this.props.questions[this.props.id].optionTwo.votes.length)) * 100}
                                                                style={{margin: '1rem', fontSize: '15px'}}/> </Col>
                                         </Row>
                                         <Row>
-                                            <span className='text-muted' style={{marginTop: '2rem'}}>{this.props.poll.optionTwo.text}
+                                            <span className='text-muted'
+                                                  style={{marginTop: '2rem'}}>{this.props.poll.optionTwo.text}
                                                 {this.props.answered && this.props.answeredOption === 'optionTwo' &&
                                                     <span className='text-success'>
-                                                        <MdOutlineWhereToVote style={{marginLeft: 20, fontSize:'30px'}}/>
+                                                        <MdOutlineWhereToVote
+                                                            style={{marginLeft: 20, fontSize: '30px'}}/>
                                                     </span>
                                                 }
                                             </span>
                                         </Row>
                                         <Row>
-                                            <Col> <ProgressBar animated label={this.props.questions[this.props.id].optionTwo.votes.length + ` vote(s)`}
+                                            <Col> <ProgressBar animated
+                                                               label={this.props.questions[this.props.id].optionTwo.votes.length + ` vote(s)`}
                                                                now={((this.props.questions[this.props.id].optionTwo.votes.length)
                                                                    / (this.props.questions[this.props.id].optionOne.votes.length
-                                                                       + this.props.questions[this.props.id].optionTwo.votes.length))*100}
+                                                                       + this.props.questions[this.props.id].optionTwo.votes.length)) * 100}
                                                                style={{margin: '1rem', fontSize: '15px'}}/> </Col>
                                         </Row>
                                         <Row>
                                             <Col>
-                                                { this.props.answered && this.props.answeredOption === 'optionOne' &&
+                                                {this.props.answered && this.props.answeredOption === 'optionOne' &&
                                                     (
-                                                        <p style={{marginTop: '2rem'}}>You have answered like {((this.props.questions[this.props.id].optionTwo.votes.length)
-                                                            / (this.props.questions[this.props.id].optionOne.votes.length
-                                                                + this.props.questions[this.props.id].optionTwo.votes.length))*100} %.
+                                                        <p style={{marginTop: '2rem'}}>You have answered
+                                                            like {((this.props.questions[this.props.id].optionTwo.votes.length)
+                                                                / (this.props.questions[this.props.id].optionOne.votes.length
+                                                                    + this.props.questions[this.props.id].optionTwo.votes.length)) * 100} %.
                                                         </p>
                                                     )
                                                 }
-                                                { this.props.answered && this.props.answeredOption === 'optionTwo' &&
+                                                {this.props.answered && this.props.answeredOption === 'optionTwo' &&
                                                     (
-                                                        <p style={{marginTop: '2rem'}}>You have answered like {((this.props.questions[this.props.id].optionTwo.votes.length)
-                                                            / (this.props.questions[this.props.id].optionOne.votes.length
-                                                                + this.props.questions[this.props.id].optionTwo.votes.length))*100} %.
+                                                        <p style={{marginTop: '2rem'}}>You have answered
+                                                            like {((this.props.questions[this.props.id].optionTwo.votes.length)
+                                                                / (this.props.questions[this.props.id].optionOne.votes.length
+                                                                    + this.props.questions[this.props.id].optionTwo.votes.length)) * 100} %.
                                                         </p>
                                                     )
                                                 }
