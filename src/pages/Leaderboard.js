@@ -4,9 +4,6 @@ import {connect} from "react-redux";
 
 class Leaderboard extends Component {
     render() {
-        console.log('UNSORTED', Object.keys(this.props.users));
-        console.log('SORTED', this.props.sortedUserIds);
-
         return (
             <Container fluid={true}>
                 <Row>

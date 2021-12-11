@@ -1,4 +1,4 @@
-import {RECEIVE_USERS, SAVE_ANSWER_TO_USER, SAVE_QUESTION_TO_QUESTIONS, SAVE_QUESTION_TO_USER} from "../actionTypes";
+import {RECEIVE_USERS, SAVE_ANSWER_TO_USER, SAVE_QUESTION_TO_USER} from "../actionTypes";
 
 export function receiveUsersActionCreator (users) {
     return {
@@ -19,7 +19,7 @@ export function saveAnswerToUserActionCreator(authedUser, qid, answer){
 
 export function saveQuestionToUserActionCreator(question){
     return {
-        type: SAVE_QUESTION_TO_QUESTIONS,
+        type: SAVE_QUESTION_TO_USER,
         question
     }
 }

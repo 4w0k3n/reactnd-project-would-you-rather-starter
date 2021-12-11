@@ -16,6 +16,7 @@ export function users(state = {}, action) {
                 }
             }
         case SAVE_QUESTION_TO_USER:
+            console.log(action);
             return {
                 ...state,
                 [action.question.author]: {
